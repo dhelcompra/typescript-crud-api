@@ -11,10 +11,11 @@ export interface UserAttributes {
     role: string;
     createdAt: Date;
     updatedAt: Date;
+    isVerified: boolean;
 }
 
 export interface UserCreationAttributes
-extends Optional<UserAttributes, 'id' | 'createdAt' | 'updatedAt'> {}
+extends Optional<UserAttributes, 'id' | 'createdAt' | 'updatedAt' | 'isVerified'> {}
 
 export class User
 extends Model<UserAttributes, UserCreationAttributes>
@@ -29,6 +30,7 @@ implements UserAttributes {
     public role!: string;
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
+    public isVerified!: boolean;
 }
 
 export default function (sequelize: Sequelize): typeof User {
@@ -80,6 +82,7 @@ export default function (sequelize: Sequelize): typeof User {
                 defaultValue: false,
             },
         },
+        
         {
             sequelize,
             modelName: 'User',
