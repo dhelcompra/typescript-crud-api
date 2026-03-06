@@ -74,6 +74,11 @@ export default function (sequelize: Sequelize): typeof User {
                 allowNull: false,
                 defaultValue: DataTypes.NOW,
             },
+            isVerified: {
+                type: DataTypes.BOOLEAN,
+                allowNull: false,
+                defaultValue: false,
+            },
         },
         {
             sequelize,
